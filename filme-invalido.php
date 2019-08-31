@@ -1,5 +1,6 @@
 <?php
 
+use Alura\Doctrine\Entity\ClassificacaoEnum;
 use Alura\Doctrine\Entity\Filme;
 
 require_once 'vendor/autoload.php';
@@ -14,7 +15,7 @@ $filme = new Filme(
     $portugues,
     null,
     '2019',
-    'qualquer'
+    ClassificacaoEnum::LIVRE()
 );
 
 $em->persist($filme);

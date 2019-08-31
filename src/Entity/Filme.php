@@ -23,7 +23,7 @@ class Filme
         Idioma $idiomaOriginal,
         ?string $sinopse = null,
         ?string $anoLancamento = null,
-        ?string $classificacao = null
+        ?ClassificacaoEnum $classificacao = null
     ) {
         $this->id = $id;
         $this->titulo = $titulo;
@@ -61,5 +61,10 @@ class Filme
         return $this->atores->map(function (Ator $ator) {
             return $ator->getNome();
         })->toArray();
+    }
+
+    public function getClassificacao()
+    {
+        return $this->classificacao->getKey();
     }
 }

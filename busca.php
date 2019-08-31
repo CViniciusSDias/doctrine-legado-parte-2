@@ -13,6 +13,7 @@ foreach ($filmes as $filme) {
     echo $filme->getTitulo() . PHP_EOL . 'Idioma: ' . $filme->getIdiomaAudio();
     echo PHP_EOL;
     echo PHP_EOL;
+    echo "Classificacao: " . $filme->getClassificacao() . PHP_EOL;
 
-    echo implode(', ', $filme->getAtores());
+    echo implode(', ', $filme->getAtores()) . PHP_EOL;
 }
