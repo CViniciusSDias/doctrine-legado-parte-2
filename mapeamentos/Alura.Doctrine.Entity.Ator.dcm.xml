@@ -4,6 +4,11 @@
             <index columns="ultimo_nome" name="idx_ultimo_nome" />
         </indexes>
 
+        <unique-constraints>
+            <unique-constraint columns="primeiro_nome,ultimo_nome"
+                               name="idx_nome_completo_unique" />
+        </unique-constraints>
+
         <id name="id" column="id_ator" type="integer">
             <generator strategy="IDENTITY" />
         </id>
