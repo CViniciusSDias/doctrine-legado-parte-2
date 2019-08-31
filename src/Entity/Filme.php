@@ -11,6 +11,7 @@ class Filme
     private $sinopse;
     private $anoLancamento;
     private $ultimaAtualizacao;
+    private $classificacao;
     private $idiomaAudio;
     private $idiomaOriginal;
     private $atores;
@@ -21,7 +22,8 @@ class Filme
         Idioma $idiomaAudio,
         Idioma $idiomaOriginal,
         ?string $sinopse = null,
-        ?string $anoLancamento = null
+        ?string $anoLancamento = null,
+        ?string $classificacao = null
     ) {
         $this->id = $id;
         $this->titulo = $titulo;
@@ -31,6 +33,7 @@ class Filme
         $this->anoLancamento = $anoLancamento;
         $this->ultimaAtualizacao = new \DateTimeImmutable();
         $this->atores = new ArrayCollection();
+        $this->classificacao = $classificacao;
     }
 
     public function addAtor(Ator $ator): void
