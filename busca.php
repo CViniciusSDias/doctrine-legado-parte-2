@@ -1,19 +1,24 @@
 <?php
 
+use Alura\Doctrine\Entity\Ator;
 use Alura\Doctrine\Entity\Filme;
 
 require_once 'vendor/autoload.php';
 
+$debug = new \Doctrine\DBAL\Logging\DebugStack();
+
 $em = (new \Alura\Doctrine\Helper\EntityManagerCreator())->criaEntityManager();
+$em->getConfiguration()->setSQLLogger($debug);
 
-/** @var Filme[] $filmes */
-$filmes = $em->getRepository(Filme::class)->findAll();
+$repositorioAtores = $em->getRepository(Ator::class);
 
-foreach ($filmes as $filme) {
-    echo $filme->getTitulo() . PHP_EOL . 'Idioma: ' . $filme->getIdiomaAudio();
-    echo PHP_EOL;
-    echo PHP_EOL;
-    echo "Classificacao: " . $filme->getClassificacao() . PHP_EOL;
+$atoresMaisAtuantes = $repositorioAtores->findAll();
 
-    echo implode(', ', $filme->getAtores()) . PHP_EOL;
+foreach ($atoresMaisAtuantes as $ator) {
+    echo "O(a) ator/atriz {$ator->getNome()} atuou em {$ator->quantidadeFilmes()} filmes" . PHP_EOL;
+}
+
+
+foreach ($debug->queries as $query) {
+    var_dump($query);
 }

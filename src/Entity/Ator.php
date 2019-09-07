@@ -26,4 +26,9 @@ class Ator extends Pessoa
         $this->filmes->add($filme);
         $filme->addAtor($this);
     }
+
+    public function quantidadeFilmes(): int
+    {
+        return $this->filmes->count();
+    }
 }
