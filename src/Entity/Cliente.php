@@ -2,10 +2,6 @@
 
 namespace Alura\Doctrine\Entity;
 
-class Cliente
+class Cliente extends Pessoa
 {
-    private $id;
-    private $primeiroNome;
-    private $ultimoNome;
-    private $ultimaAtualizacao;
 }
