@@ -19,13 +19,7 @@ class RepositorioAtores extends EntityRepository
 
     public function buscaAtoresMaisAtuantes()
     {
-        $sql = 'SELECT CONCAT(ator.primeiro_nome, \' \', ator.ultimo_nome) AS nome,
-                       COUNT(filme.id_filme) qtd_filmes
-                  FROM ator
-                  JOIN ator_filme ON ator_filme.id_ator = ator.id_ator
-                  JOIN filme ON filme.id_filme = ator_filme.id_filme
-              GROUP BY ator.id_ator
-			     LIMIT 2;';
+        $sql = 'SELECT * FROM atores_mais_atuantes;';
         $rsm = new ResultSetMapping();
         $rsm->addScalarResult('nome', 'nome');
         $rsm->addScalarResult('qtd_filmes', 'qtdFilmes');
